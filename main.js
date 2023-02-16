@@ -1,43 +1,25 @@
-import { clients, refreshClients } from "../../private/clients.js"; 
+import { clients, refreshClients } from "../../private/clients.js";
 
-  
+export class App {
+  constructor(config) {
+    this.config = config;
+  }
 
- export class App { 
+  async notification(title, content) {
+    await refreshClients();
 
-   constructor(config) { 
+    let client = clients[this.config.client];
 
-     this.config = config; 
+    return (
+      await client.request("automate_notification", "notification", [
+        {
+          title,
 
-   } 
-
-  
-
-   async notification(title, content) { 
-
-     await refreshClients(); 
-
-     let client = clients[this.config.client]; 
-
-     return ( 
-
-       await client.request("automate_notification", "notification", [ 
-
-         { 
-
-           title, 
-
-           text: content, 
-
-         }, 
-
-       ]) 
-
-     ).result 
-
-       ? "Success" 
-
-       : "Error"; 
-
-   } 
-
- }
+          text: content,
+        },
+      ])
+    ).result
+      ? "Success"
+      : "Error";
+  }
+}
