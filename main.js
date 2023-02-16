@@ -5,13 +5,20 @@ export class App {
     this.config = config;
   }
 
-  async vibrate(duration) {
+  async notification(title, content) {
     await refreshClients();
 
     let client = clients[this.config.client];
 
-    return (await client.request("automate_vibrate", "vibrate", [duration]))
-      .result
+    return (
+      await client.request("automate_notification", "notification", [
+        {
+          title,
+
+          text: content,
+        },
+      ])
+    ).result
       ? "Success"
       : "Error";
   }

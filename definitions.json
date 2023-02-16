@@ -1,37 +1,25 @@
-{ 
+{
+  "methods": {
+    "notification": {
+      "name": "Send Notification",
 
-   "methods": { 
+      "arguments": [
+        {
+          "type": "text",
 
-     "notification": { 
+          "name": "Notification Title",
 
-       "name": "Send Notification", 
+          "placeholder": "Title"
+        },
 
-       "arguments": [ 
+        {
+          "type": "text",
 
-         { 
+          "name": "Notification Content",
 
-           "type": "text", 
-
-           "name": "Notification Title", 
-
-           "placeholder": "Title" 
-
-         }, 
-
-         { 
-
-           "type": "text", 
-
-           "name": "Notification Content", 
-
-           "placeholder": "Content" 
-
-         } 
-
-       ] 
-
-     } 
-
-   } 
-
- }
+          "placeholder": "Content"
+        }
+      ]
+    }
+  }
+}
